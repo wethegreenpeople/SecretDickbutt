@@ -93,7 +93,8 @@ def resource_path(relative_path):
 CopyRename()
 DickButtify()
 SetWallpaper()
+schedule.every().hour.do(DickButtify)
+schedule.every().hour.do(SetWallpaper)
 while True:
-	schedule.every().hour.do(DickButtify)
-	schedule.every().hour.do(SetWallpaper)
+	schedule.run_pending()
 	time.sleep(60)
