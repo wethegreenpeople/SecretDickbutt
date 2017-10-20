@@ -13,7 +13,6 @@ username = getpass.getuser()
 dest="C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\info.log"
 logging.basicConfig(filename=dest,level=logging.INFO)
 logger = logging.getLogger(__name__)
-dickButtsAdded = 0
 
 def SetWallpaper(i=[0]):
 	username = getpass.getuser()
@@ -51,7 +50,13 @@ def DickButtify():
 		shutil.copy(source,dest)
 		
 		wallpaper = Image.open("C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\wallpaper.jpg").convert("RGBA")
-		dickbutt = Image.open(str(resource_path("mask.png"))).convert("RGBA")
+		# If you want to specify your own mask, instead of the default dickbutt
+		if os.path.isfile("mask.png") == True:
+			logging.info("Using overridden mask")
+			dickbutt = Image.open("mask.png").convert("RGBA")
+		elif os.path.isfile("mask.png") == False:
+			logging.info("Using dickbutt mask")
+			dickbutt = Image.open(str(resource_path("mask.png"))).convert("RGBA")
 		size = random.randint(100,300)
 		dickbutt = dickbutt.resize((size,size))
 
