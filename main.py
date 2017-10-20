@@ -9,7 +9,9 @@ import ctypes
 from ctypes import wintypes
 import logging
 
-logging.basicConfig(filename="info.log",level=logging.INFO)
+username = getpass.getuser()
+dest="C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\info.log"
+logging.basicConfig(filename=dest,level=logging.INFO)
 logger = logging.getLogger(__name__)
 dickButtsAdded = 0
 
@@ -45,10 +47,10 @@ def DickButtify():
 		# Copying the current wallpaper to our working folder to be edited
 		logging.info("Grabbing current wallpaper")
 		source="C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\TranscodedWallpaper"
-		dest="wallpaper.jpg"
+		dest="C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\wallpaper.jpg"
 		shutil.copy(source,dest)
 		
-		wallpaper = Image.open("wallpaper.jpg").convert("RGBA")
+		wallpaper = Image.open("C:\\Users\\" + str(username) + "\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\wallpaper.jpg").convert("RGBA")
 		dickbutt = Image.open(str(resource_path("mask.png"))).convert("RGBA")
 		size = random.randint(100,300)
 		dickbutt = dickbutt.resize((size,size))
